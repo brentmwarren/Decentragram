@@ -1,5 +1,5 @@
 pragma solidity ^0.5.0;
-
+// Is this working?
 contract Decentragram {
   string public name = "Decentragram";
 
@@ -23,7 +23,6 @@ function uploadImage(string memory _imgHash, string memory _description) public 
   // Add image to contract
   images[imageCount] = Image(imageCount, _imgHash, _description, 0, msg.sender);
 }
-
 
   // Tip images
 }
