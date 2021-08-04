@@ -21,7 +21,6 @@ function uploadImage(string memory _imgHash, string memory _description) public 
   imageCount = imageCount ++;
 
   // Add image to contract
-
   images[imageCount] = Image(imageCount, _imgHash, _description, 0, msg.sender);
 }
 
