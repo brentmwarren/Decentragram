@@ -31,7 +31,7 @@ contract("Decentragram", ([deployer, author, tipper]) => {
     it("creates images", async () => {
       result = await decentragram.uploadImage();
       let image = await decentragram.images(1);
-      console.log(images);
+      console.log(image);
     });
   });
 });

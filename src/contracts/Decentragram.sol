@@ -4,6 +4,7 @@ contract Decentragram {
   string public name = "Decentragram";
 
   //Store Images
+  uint public imageCount= 0;
 mapping(uint => Image) public images;
 
 struct Image {
@@ -14,8 +15,14 @@ struct Image {
   address payable author;
 }
   //Create Images
-function uploadImage() public {
-  images[1] = Image(1, 'abc123', 'hello world', 0, address(0x0));
+function uploadImage(string memory _imgHash, string memory _description) public {
+
+  //increment image id
+  imageCount = imageCount ++;
+
+  // Add image to contract
+
+  images[imageCount] = Image(imageCount, _imgHash, _description, 0, msg.sender);
 }
 
 
