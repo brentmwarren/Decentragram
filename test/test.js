@@ -39,7 +39,12 @@ contract("Decentragram", ([deployer, author, tipper]) => {
     it("creates images", async () => {
       // SUCCESS
       assert.equal(imageCount, 1);
-      console.log(result.logs[0].args);
+      const event = result.logs[0].args;
+      assert.equal(event.id.toNumber(), imageCount.toNumber(), "id is correct");
+      assert.equal(event.hash, hash, "hash is correct");
+      assert.equal(event.description, "Image Descrioption", "id is correct");
+      assert.equal(event.tipAmount, "0", "tip amount is correct");
+      assert.equal(event.author, author, "author is correct");
     });
   });
 });

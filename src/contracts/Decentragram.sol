@@ -24,6 +24,14 @@ struct Image {
 
   //Create Images
 function uploadImage(string memory _imgHash, string memory _description) public {
+  // Make sure the image hash exists
+  require(bytes(_description).length > 0);
+
+  //Make sure image description exists
+  require(bytes(_imgHash).length > 0);
+
+  //Make sure uploader address exists
+  require(msg.sender != address(0x0));
 
   //increment image id
   imageCount ++;
