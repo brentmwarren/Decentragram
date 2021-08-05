@@ -26,7 +26,7 @@ struct Image {
 function uploadImage(string memory _imgHash, string memory _description) public {
 
   //increment image id
-  imageCount = imageCount ++;
+  imageCount ++;
 
   // Add image to contract
   images[imageCount] = Image(imageCount, _imgHash, _description, 0, msg.sender);
