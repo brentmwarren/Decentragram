@@ -4,7 +4,7 @@ contract Decentragram {
   string public name = "Decentragram";
 
   //Store Images
-  uint public imageCount= 0;
+uint public imageCount = 0;
 mapping(uint => Image) public images;
 
 struct Image {
@@ -22,13 +22,21 @@ struct Image {
    address payable author
  );
 
+  event ImageTipped(
+   uint id,
+   string hash,
+   string description,
+   uint tipAmount,
+   address payable author
+ );
+
   //Create Images
 function uploadImage(string memory _imgHash, string memory _description) public {
-  // Make sure the image hash exists
-  require(bytes(_description).length > 0);
-
   //Make sure image description exists
   require(bytes(_imgHash).length > 0);
+
+  // Make sure the image hash exists
+  require(bytes(_description).length > 0);
 
   //Make sure uploader address exists
   require(msg.sender != address(0x0));
@@ -44,5 +52,25 @@ function uploadImage(string memory _imgHash, string memory _description) public 
 }
 
   // Tip images
+ function tipImageOwner(uint _id) public payable {
 
+   // Make sure the id is valid
+require(_id > 0 && _id <= imageCount);
+
+   // Fetch the image from storage
+   Image memory _image = images[_id];
+   // Ftech the author
+   address payable _author = _image.author ;
+
+   address(_author).transfer(msg.value);
+
+   //update tip amount
+   _image.tipAmount = _image.tipAmount + msg.value;
+
+   // update the image
+   images[_id] = _image;
+
+     emit ImageTipped(_id, _image.hash, _image.description, _image.tipAmount, _author);
+
+ }
 }
