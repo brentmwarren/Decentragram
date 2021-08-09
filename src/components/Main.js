@@ -13,7 +13,7 @@ class Main extends Component {
           >
             <div className="content mr-auto ml-auto">
               <p>&nbsp;</p>
-              <h1 className="d-4">Edit this file in App.js!</h1>
+              <h1 className="d-4">Edit this file in App.js! or else...</h1>
 
               {/* Code ... */}
 
