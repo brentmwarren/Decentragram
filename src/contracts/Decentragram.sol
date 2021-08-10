@@ -59,6 +59,7 @@ require(_id > 0 && _id <= imageCount);
 
    // Fetch the image from storage
    Image memory _image = images[_id];
+
    // Ftech the author
    address payable _author = _image.author ;
 
